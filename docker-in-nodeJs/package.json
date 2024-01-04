@@ -1,0 +1,14 @@
+{
+  "name": "docker-in-nodeJs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "wwioiww0514",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
