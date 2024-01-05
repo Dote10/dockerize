@@ -17,4 +17,12 @@ COPY ./ ./
 EXPOSE 3000
 
 
-CMD [ "yarn","start" ]
+CMD [ "yarn","start"]
+
+# Volume을 이용해서 Dockerfile로 빌드한 image를 run할 때 사용하는 명령어
+#Winddow(cmd)
+# docker run -p 포트번호:포트번호  -v /usr/src/app/node_modules 
+# -v %cd%:/usr/src/app 이미지 아이디
+#IOS
+# docker run -p 포트번호:포트번호 -v /usr/src/app/node_modules 
+# -v $(pwd):/usr/src/app 이미지 아이디

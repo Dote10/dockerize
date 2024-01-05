@@ -1,0 +1,10 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  node-app:
+    #Dockerfile을 읽어서 image를 build
+    #build 속성은 Dockerfile의 경로를 나타낸다.
+    build: .
+    ports:
+      - "4000:4000"
