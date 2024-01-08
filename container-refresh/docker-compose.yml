@@ -1,0 +1,19 @@
+# docker run -it -p 3400:3000  -e CHOKIDAR_USEPOLLING=true 
+# -v /usr/src/app/node_modules 
+# -v %cd%:/usr/src/app wwioiww0514/container_refresh 
+# 위 스크립트 대신에 docker-compose를 이용해서 설정정보지정하고
+# docker-compose 컨테이너를 실행한다. 
+version: "3"
+services: #docker-compose로 실행하려는 컨테이너들 
+  react2: #컨테이너 이름 
+    build:
+      context: . #도커 이미지를 구성하기 위한 파일과 폴더들이 있는 경로 
+      dockerfile: Dockerfile.dev #도커 파일명 명시 
+    ports:
+    - "3400:3000"
+    volumes: #포트 맵핑 로컬_포트: 컨테이너_포트 
+      - /usr/src/app/node_modules #참조하지 않을것
+      - ./:/usr/src/app            #참조할 것 
+    # stidn_opne: true   #리액트 앱을 뜰 필요 
+    # enviroment:
+    #   - CHOKIDAR_USEPOLLING=true
