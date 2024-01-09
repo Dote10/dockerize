@@ -1,0 +1,16 @@
+name: react-in-docker
+
+on: 
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3
+      - reun: docker-compose up -d
+        
