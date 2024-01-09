@@ -14,9 +14,17 @@ services: #docker-compose로 실행하려는 컨테이너들
     volumes: #포트 맵핑 로컬_포트: 컨테이너_포트 
       - /usr/src/app/node_modules #참조하지 않을것
       - ./:/usr/src/app            #참조할 것 
-    #stidn_opne: true   #리액트 앱을 뜰 필요 
     stdin_open: true
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
- 
+
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    command : ["npm", "run","test"]
+    stdin_open: true
+  
+  
