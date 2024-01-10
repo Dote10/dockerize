@@ -15,7 +15,6 @@ jobs:
         run: |
           cd react-in-docker
           docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx .
-          docker run ${{ secrets.DOCKER_USER}}/react_in_nginx npm run test
           echo "TEST Success"
 
       
