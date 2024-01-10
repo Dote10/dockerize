@@ -13,12 +13,12 @@ RUN npm install
 
 COPY ./ ./
 
-RUN npm run build
+CMD ["npm","run","start"]
 
 #build폴더에 파일들을 Nginx가 Web브라우저의 
 #요청에 따라 제공해준다.  
 
 # 2. run stage : 도커 이미지를 이용한 Nginx시작 
-FROM nginx 
-EXPOSE 80
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html 
+# FROM nginx 
+# EXPOSE 80
+# COPY --from=builder /usr/src/app/build /usr/share/nginx/html 
