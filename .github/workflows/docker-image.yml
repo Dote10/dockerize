@@ -12,17 +12,27 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
 
+      - name: change path
+        run: |
+          cd react-in-docker
+
       - name: Docker Login
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}  
-    
-      - name: Docker build & push to dev
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: build and release to DockerHub
+        env:
+          NAME: ${{ secrets.DOCKER_USER}}
+          APP: react_in_docker
         run: |
-          cd react-in-docker
-          docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx .
-          docker run ${{ secrets.DOCKER_USER }}/react_in_docker_dev  npm run test -- --coverage
+          docker build -t $NAME/$APP -f ./Dockerfile.dev . 
+          docker push $NAME/$APP:latest  
+    
+      - name: test App
+        run: |
+          docker run ${{ secrets.DOCKER_USER }}/react_in_docker  npm run test -- --coverage
           echo "TEST Success"
 
       
