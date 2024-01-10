@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Docker build & push to dev
         run: |
-          docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx /react-in-docker
+          cd react-in-docker
+          docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx .
           docker run ${{ secrets.DOCKER_USER}}/react_in_nginx npm run test
           echo "TEST Success"
 
