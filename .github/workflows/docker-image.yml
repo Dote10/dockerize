@@ -18,10 +18,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: build, test, release to DockerHub
+        uses: actions/checkout@v3
         env : 
           NAME: ${{ secrets.DOCKER_USER }}
           APP: react_in_docker_dev
-        RUN: |
+        run: |
           cd react_in_docker
           docker build $NAME/$APP -f Dockerfile.dev
           docker run $NAME/$APP  npm run test -- --coverage
