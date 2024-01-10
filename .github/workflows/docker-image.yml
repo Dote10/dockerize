@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest  
     steps:      
       
-      - name: checkOut
         uses: actions/checkout@v3
-
       - name: build, test, release to DockerHub      
         run: |
           cd react_in_docker
