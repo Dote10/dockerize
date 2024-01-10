@@ -14,10 +14,10 @@ jobs:
 
       - name: Docker Login
         uses: docker/login-action@v2
-          with:
-            username: ${{ secrets.DOCKER_USER }}
-            password: ${{ secrets.DOCKER_PASSWORD }}  
-      
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}  
+    
       - name: Docker build & push to dev
         run: |
           cd react-in-docker
