@@ -7,13 +7,13 @@ on:
     branches: ["main"]
 
 jobs:
-  CI-CD:
+  build/test:
     runs-on: ubuntu-latest  
     steps: 
     
       - uses: actions/checkout@v3
     
-      - name: Docker build & test
+      - name: Docker image build & test
         run: |
           cd react-in-docker
           docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_docker_dev .
