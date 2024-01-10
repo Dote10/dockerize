@@ -11,14 +11,15 @@ jobs:
     runs-on: ubuntu-latest  
     steps: 
       
-      - name: build, test, release to DockerHub
-        uses: actions/checkout@v3
+      
 
       - name: Docker Login
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}            
+          password: ${{ secrets.DOCKER_PASSWORD }}     
+      
+      - name: build, test, release to DockerHub       
         env : 
           NAME: ${{ secrets.DOCKER_USER }}
           APP: react_in_docker_dev
