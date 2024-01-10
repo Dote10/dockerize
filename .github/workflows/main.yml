@@ -1,0 +1,17 @@
+on: 
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  CI-CD:
+    runs-on: ubuntu-latest  
+    steps: 
+      - uses: actions/checkout@3
+      - name: Docker build & push to dev
+        run: |
+          docker login -u ${{ secrets.DOCKER_USER }} -p ${{secrets.DOCKER_PASSWARD}}
+          docker build -f - Dckerfile.dev -t ${{ screts.DOCKER_USER}}/react_in_nginx .
+          docker push  ${{ screts.DOCKER_USER}}/react_in_nginx
+      
