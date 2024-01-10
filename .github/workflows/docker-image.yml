@@ -10,11 +10,32 @@ jobs:
   CI-CD:
     runs-on: ubuntu-latest  
     steps: 
-      - uses: actions/checkout@v3
-      - name: Docker build & push to dev
-        run: |
-          cd react-in-docker
-          docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx .
-          echo "TEST Success"
+
+      - name: Docker Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: build, test, release to DockerHub
+        env : 
+          NAME: ${{ secrets.DOCKER_USER }}
+          APP: react_in_docker_dev
+        RUN: |
+          cd react_in_docker
+          docker build $NAME/$APP -f Dockerfile.dev
+          docker run $NAME/$APP  npm run test -- --coverage
+          docker push $NAME/$APP:latest
+    
+
+
+
+      # - name: Docker build & push to dev
+      #   uses: actions/checkout@v3
+     
+      #   run: |
+      #     cd react-in-docker
+      #     docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER }}/react_in_nginx .
+      #     echo "TEST Success"
 
       
