@@ -23,7 +23,7 @@ jobs:
       - name: Docker build & push to dev
         run: |
           cd react-in-docker
-          docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx .
+          docker build -f Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_docker_dev .
           docker push ${{ secrets.DOCKER_USER}}/react_in_docker_dev
           docker run -e CI=true  ${{ secrets.DOCKER_USER }}/react_in_docker_dev  npm run test -- --coverage
           echo "TEST Success"
