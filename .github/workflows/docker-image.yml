@@ -10,7 +10,7 @@ jobs:
   CI-CD:
     runs-on: ubuntu-latest  
     steps: 
-    
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Docker Login
@@ -25,7 +25,7 @@ jobs:
           APP: react_in_docker_dev
         run: |
           cd react_in_docker
-          docker build $NAME/$APP -f Dockerfile.dev
+          docker build $NAME/$APP -f Dockerfile.dev .
           docker run $NAME/$APP  npm run test -- --coverage
           docker push $NAME/$APP:latest
     
