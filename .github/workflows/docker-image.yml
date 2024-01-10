@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Docker build & push to dev
         run: |
-          docker login -u ${{ secrets.DOCKER_USER }} -p ${{secrets.DOCKER_PASSWARD}}
-          docker build -f - Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx ./react-in-docker
-          docker push  ${{ secrets.DOCKER_USER}}/react_in_nginx
+          docker build -f - Dockerfile.dev -t ${{ secrets.DOCKER_USER}}/react_in_nginx /react-in-docker/.
+
       
