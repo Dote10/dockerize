@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest  
     steps:      
       
-      - name: build, test, release to DockerHub       
+      - name: build, test, release to DockerHub  
+        uses: actions/checkout@v3     
         run: |
           cd react_in_docker
           docker build ${{ secrets.DOCKER_USER }}/react_in_docker_dev -f Dockerfile.dev .
