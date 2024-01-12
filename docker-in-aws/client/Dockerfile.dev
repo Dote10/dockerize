@@ -1,4 +1,4 @@
-FROM node:apine 
+FROM node:alpine
 
 #해당 경로에 소스코드들이 들어가게된다.
 WORKDIR /app

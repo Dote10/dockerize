@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
  process.env.NODE_ENV === 'prod' ? 
     dotenv.config({path:'.env.dev'}) :
     dotenv.config({path:'.env.prod'});
-const db = require('./db');
+const {pool} = require('./db');
 
 
 const app = express();
@@ -14,27 +14,30 @@ const PORT = 5000;
 app.use(bodyParser.json());
 
 //DB lists 테이블에 있는 모든 데이터를 프론트 서버에 보내주기
-app.get('/api/list',function(req,res){
+app.get('/api/list', function(req,res){
     //데이터베이스에서 모든 정보 가져오기
-    db.pool.query(
+     pool.query(
         `SELECT * FROM list`,(error,results,fileds) =>{
-            if(error)
+            if(error){
                 return res.status(500).send(error);
-            else 
+            }else 
                 return res.json(results);
          })
+        
+    
 })
 
 // 클라이언트에서 입력한 값을 데이터베이스에 입력하기
 app.post('/api/list',function(req,res){
     //데이터베이스에 값 insert
-    db.pool.query(`INSERT INTO list (item) VALUES("${req.body.item}")`,
+    pool.query(`INSERT INTO list(item) VALUES("${req.body.item}")`,
     (error, results, fileds) =>{
-        if(error)
+        if(error){
+            console.log(error);
             return res.status(500).send(error);
-        else 
+         } else  
             return res.json({success : true, item: req.body.item })
-    }) 
+    });
 })
 
 

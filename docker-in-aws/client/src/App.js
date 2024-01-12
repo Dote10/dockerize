@@ -10,13 +10,11 @@ function App() {
   const [list, setList] = useState([]);
   const [item, setItem] = useState("");
 
-useEffect(() =>{
-  
+useEffect( () =>{
      // api를 통해서 item 데이터를 받아오고 
-    axios.get(`/api/list`)
+  axios.get('/api/list')
       .then(response =>{
-    // 화면에 데이터를 담은 response를 보내준다. 
-      console.log('response', response.data)
+    // 화면에 데이터를 담은 response를 보내준다.
       setList(response.data)
     })
   },[]);
@@ -25,17 +23,17 @@ useEffect(() =>{
 //changeHandler이벤트를 실행시켜서 
 //input 박스에 value를 변화 시켜준다. 
 const changeHandler = (event) =>{
-  setItem(event.currentTarget.item)
+  setItem(event.currentTarget.value)
 }
 
 //input박스에 데이터를 넣은다음
 //확인 버튼을 누르면 해당 값이 server로 전달이 되어서 
 //server에 데이터 베이스에 저장을 한다. 
 //위 작업을 하는 핸들러 
-const submitHandler =  (event) =>{
+const submitHandler =   (event) =>{
   //원래 버튼을 클릭하면 일어나는 event를 막아준다. 
   event.preventDefault();
-  axios.post(`/api/item`,{item})
+  axios.post('/api/list',{item})
   .then(response => {
     if(response.data.success){
       console.log('response.data',response.data)
@@ -53,7 +51,7 @@ const submitHandler =  (event) =>{
         <img src={logo} className="App-logo" alt="logo" />
         <div className="container">
           {list && list.map((list, index) => (
-            <li key={index}>(list.value)</li>
+            <li key={index}>{list.item}</li>
           ))}
           <form className="example" onSubmit={submitHandler}>
             <input
