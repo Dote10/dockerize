@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const dotenv = require('dotenv');
  process.env.NODE_ENV === 'prod' ? 
-    dotenv.config({path:'.env.dev'}) :
-    dotenv.config({path:'.env.prod'});
+    dotenv.config({path:path.join(__dirname,'.env.dev')}) :
+    dotenv.config({path:path.join(__dirname,'.env.prod')});
 const {pool} = require('./db');
-
 
 const app = express();
 const PORT = 5000;
