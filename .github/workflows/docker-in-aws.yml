@@ -35,9 +35,9 @@ jobs:
       
       - name: Push image Docker Hub 
         run: |
-        docker push ${{ secrets.DOCKER_USER}}/client
-        docker push ${{ secrets.DOCKER_USER}}/api
-        docker push ${{ secrets.DOCKER_USER}}/nginx_proxy
+          docker push ${{ secrets.DOCKER_USER}}/client
+          docker push ${{ secrets.DOCKER_USER}}/api
+          docker push ${{ secrets.DOCKER_USER}}/nginx_proxy
 
 
 
