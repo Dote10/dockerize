@@ -17,7 +17,7 @@ jobs:
         run: |
           cd docker-in-aws
           docker build -t ${{secrets.DOCKER_USER}}/client_dev -f ./client/Dockerfile.dev ./client
-          docker rud -e CI=true  ${{ secrets.DOCKER_USER }}/client_dev  npm run test -- --coverage
+          docker run -e CI=true  ${{ secrets.DOCKER_USER }}/client_dev  npm run test -- --coverage
           echo "TEST Success"
       
       - name: Docker  image build 
