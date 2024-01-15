@@ -17,11 +17,12 @@ jobs:
         run: |
           cd docker-in-aws
           docker build -t ${{secrets.DOCKER_USER}}/client_dev -f ./client/Dockerfile.dev ./client
-          docker up -e CI=true  ${{ secrets.DOCKER_USER }}/client_dev  npm run test -- --coverage
+          docker run -e CI=true  ${{ secrets.DOCKER_USER }}/client_dev  yarn test -- --coverage
           echo "TEST Success"
       
       - name: Docker  image build 
         run: |
+          cd docker-in-aws
           docker build -t ${{secrets.DOCKER_USER}}/client ./client
           docker build -t ${{secrets.DOCKER_USER}}/api ./api
           docker build -t ${{secrets.DOCKER_USER}}/nginx_proxy ./nginx_proxy
@@ -35,9 +36,9 @@ jobs:
       
       - name: Push image Docker Hub 
         run: |
-        docker push ${{ secrets.DOCKER_USER}}/client
-        docker push ${{ secrets.DOCKER_USER}}/api
-        docker push ${{ secrets.DOCKER_USER}}/nginx_proxy
+          docker push ${{ secrets.DOCKER_USER}}/client
+          docker push ${{ secrets.DOCKER_USER}}/api
+          docker push ${{ secrets.DOCKER_USER}}/nginx_proxy
 
 
 
