@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
@@ -13,7 +14,7 @@ function App() {
 
 useEffect( () =>{
      // api를 통해서 item 데이터를 받아오고 
-  Axios.axios.get('/api/list')
+  axios.get('/api/list')
       .then(response =>{
     // 화면에 데이터를 담은 response를 보내준다.
       setList(response.data)
@@ -34,7 +35,7 @@ const changeHandler = (event) =>{
 const submitHandler =   (event) =>{
   //원래 버튼을 클릭하면 일어나는 event를 막아준다. 
   event.preventDefault();
-  Axios.axios.post('/api/list',{item})
+  axios.post('/api/list',{item})
   .then(response => {
     if(response.data.success){
       console.log('response.data',response.data)
