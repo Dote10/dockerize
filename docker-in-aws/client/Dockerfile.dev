@@ -3,7 +3,7 @@ FROM node:alpine
 #해당 경로에 소스코드들이 들어가게된다.
 WORKDIR /app
 
-COPY ./package*.json ./
+COPY ./package.json ./
 
 RUN yarn install
 
@@ -13,4 +13,4 @@ COPY ./ ./
 #해당 컨테이너가 실행 될때 실행할 명령어를 지정해 준다.
 #컨테이너 안에 있는 Node를 실행 시켜줄 명령어 
 
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "build" ]
