@@ -22,6 +22,7 @@ jobs:
       
       - name: Docker  image build 
         run: |
+          cd docker-in-aws
           docker build -t ${{secrets.DOCKER_USER}}/client ./client
           docker build -t ${{secrets.DOCKER_USER}}/api ./api
           docker build -t ${{secrets.DOCKER_USER}}/nginx_proxy ./nginx_proxy
