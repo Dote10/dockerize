@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest  
     steps: 
 
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
      
       - name: Docker dev image build & test
         run: |
@@ -20,7 +21,7 @@ jobs:
           docker run -e CI=true  ${{ secrets.DOCKER_USER }}/client_dev  yarn test -- --coverage
           echo "TEST Success"
       
-      - name: Docker  image build 
+      - name: Docker image build 
         run: |
           cd docker-in-aws
           docker build -t ${{secrets.DOCKER_USER}}/client ./client
