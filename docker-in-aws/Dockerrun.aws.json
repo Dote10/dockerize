@@ -5,14 +5,14 @@
             "name":"client",
             "image":"wwioiww0514/client",
             "hostname":"client",
-            "essential":false,
+            "essential":true,
             "memory":128
         },
         {
             "name":"api",
             "image":"wwioiww0514/api",
             "hostname":"api",
-            "essential":false,
+            "essential":true,
             "memory":128
         },
         {
