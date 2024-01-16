@@ -18,7 +18,7 @@
         {
             "name":"niginx_proxy",
             "image":"wwioiww0514/nginx_proxy",
-            "hostname":"nginx_proxy",
+            "hostname":"nginx",
             "essential":true,
             "portMappings":[
                 {
