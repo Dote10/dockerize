@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion":2,
+    "containerDefinitions":[
+        {
+            "name":"client",
+            "image":"wwioiww0514/client",
+            "hostname":"client",
+            "essential":false,
+            "memory":128
+        },
+        {
+            "name":"api",
+            "image":"wwioiww0514/api",
+            "hostname":"api",
+            "essential":false,
+            "memory":128
+        },
+        {
+            "name":"niginx_proxy",
+            "image":"wwioiww0514/nginx_proxy",
+            "hostname":"nginx_proxy",
+            "essential":true,
+            "portMappings":[
+                {
+                    "hostPort":80,
+                    "containerPort":80
+                }
+            ],
+            "links":["client","api"],
+            "memory":128
+        }
+    ]
+}

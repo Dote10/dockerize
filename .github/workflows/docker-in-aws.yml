@@ -58,7 +58,7 @@ jobs:
           existing_bucket_name: ${{ secrets.AWS_BUCKET_NAME }}
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
-          deployment_package: docker-in-aws/docker-compose.yml
+          deployment_package: docker-in-aws/Dockerrun.aws.json
           
 
 
