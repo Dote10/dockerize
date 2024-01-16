@@ -40,6 +40,13 @@ jobs:
           docker push ${{ secrets.DOCKER_USER}}/client
           docker push ${{ secrets.DOCKER_USER}}/api
           docker push ${{ secrets.DOCKER_USER}}/nginx_proxy
+
+      - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
      
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
@@ -49,10 +56,10 @@ jobs:
           application_name: docker-in-aws
           environment_name: Docker-in-aws-env
           existing_bucket_name: ${{ secrets.AWS_BUCKET_NAME }}
-          version_label: 12345
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: docker-in-aws/docker-compose.yml
-          use_existing_version_if_available: true
+          
 
 
 
