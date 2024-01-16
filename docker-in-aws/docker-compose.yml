@@ -29,7 +29,7 @@ services:
     enviroment:
       MYSQL_HOST : ${{secrets.DOCKER_DB_HOST}}
       MYSQL_USER : ${{secrets.DOCKER_DB_USER}}
-      MYSQL_ROOT_PASSWORD: ${secrets.DOCKER_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${{secrets.DOCKER_DB_PASSWORD}}
       MYSQL_DATABASE: ${{secrets.DOCKER_DB_USE}}
       MYSSQL_PORT: 3306
     mem_limit: 128m
