@@ -16,7 +16,7 @@
             "memory":128
         },
         {
-            "name":"niginx_proxy",
+            "name":"niginx",
             "image":"wwioiww0514/nginx_proxy",
             "hostname":"nginx",
             "essential":true,
