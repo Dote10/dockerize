@@ -42,7 +42,6 @@ app.post('/api/list',function(req,res){
 
 
 app.listen(PORT, () =>{
-    console.log(process.env.API_ENDPOINT);
     const endponit = process.env.API_ENDPOINT;
     console.log(endponit.MYSQL_USER);
     console.log("test","test");
