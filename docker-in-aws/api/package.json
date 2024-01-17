@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit1",
-    "start": "export NODE_ENV=prod && node index.js",
+    "start": "node index.js",
     "start:dev": "export NODE_ENV=dev && nodemon index.js"
   },
   "license": "MIT",
