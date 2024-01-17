@@ -42,8 +42,7 @@ app.post('/api/list',function(req,res){
 
 
 app.listen(PORT, () =>{
-    const endponit = process.env.API_ENDPOINT;
-    console.log(endponit.MYSQL_USER);
+    console.log(new Date('YYYY-MM-DD hh:mm:ss'));  
     console.log("test","test");
     console.log(process.env.MYSQL_USER);
     console.log(`어플리케이션이 서버 ${PORT}에서 실행 되었습니다.`);
