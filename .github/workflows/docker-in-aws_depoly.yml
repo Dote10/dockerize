@@ -1,8 +1,8 @@
 name: react-in-docker
 
 on: 
-  # push:
-  #   branches: ["main"]
+   push:
+     branches: ["main"]
 
 jobs:
   deploy:
